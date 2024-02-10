@@ -1,0 +1,372 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ZET Digital LLC test worck",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/create-post": {
+            "post": {
+                "tags": [
+                    "Post Section"
+                ],
+                "summary": "Request that add new post",
+                "description": "",
+                "operationId": "9d38aad5d5ebd5e32e77480c0a9d8cf9",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Please write title",
+                        "required": true,
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Please write description",
+                        "required": true,
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "website_id",
+                        "in": "query",
+                        "description": "Please write a website id",
+                        "required": true,
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/get-post": {
+            "get": {
+                "tags": [
+                    "Post Section"
+                ],
+                "summary": "Request that get a single post",
+                "description": "",
+                "operationId": "d0af0d921814c145e2a7cf4e9e00b95a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Please write post id",
+                        "required": true,
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/get-all-posts": {
+            "get": {
+                "tags": [
+                    "Post Section"
+                ],
+                "summary": "Request that get all post",
+                "description": "",
+                "operationId": "bdd0a81121c41034c1042cb88f95e8ac",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/get-website-posts": {
+            "get": {
+                "tags": [
+                    "Post Section"
+                ],
+                "summary": "Request that get all post wits website",
+                "description": "",
+                "operationId": "3ed96290e9a9da7ace07040ec557db5a",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/create-website": {
+            "post": {
+                "tags": [
+                    "Web Site Section"
+                ],
+                "summary": "Request that add new Web Site",
+                "description": "",
+                "operationId": "79099c96aae894b6f0fa13011a9d1902",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "Please write a Domain",
+                        "required": true,
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Please write status",
+                        "required": false,
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/get-website": {
+            "get": {
+                "tags": [
+                    "Web Site Section"
+                ],
+                "summary": "Request that get single web site",
+                "description": "",
+                "operationId": "7301b9eff3db5b49acdd594fe96eb61e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Please write web site id",
+                        "required": true,
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/get-all-websites": {
+            "get": {
+                "tags": [
+                    "Web Site Section"
+                ],
+                "summary": "Request that get all web sites",
+                "description": "",
+                "operationId": "7138cc027b3c00a4012dc0888ec6ba8b",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/subscribe": {
+            "post": {
+                "tags": [
+                    "Subscribe Section"
+                ],
+                "summary": "Request for subscribing",
+                "description": "",
+                "operationId": "080fd174e68a96021bd0f36abd873164",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "Please write domain",
+                        "required": true,
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Please write email",
+                        "required": true,
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/get-subscriber": {
+            "get": {
+                "tags": [
+                    "Subscribe Section"
+                ],
+                "summary": "Request for get subscribers",
+                "description": "",
+                "operationId": "e7394e3f2e0ca9bc666f7d39b7b0e2e8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Please write subscriber id",
+                        "required": true,
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        },
+        "/api/get-all-subscribers": {
+            "get": {
+                "tags": [
+                    "Subscribe Section"
+                ],
+                "summary": "Request for get all subscribers",
+                "description": "",
+                "operationId": "4a1d4b8360a3ed0d503faf2dc114e36c",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "validation error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
