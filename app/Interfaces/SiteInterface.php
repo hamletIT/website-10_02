@@ -3,8 +3,8 @@
 namespace App\Interfaces;
 
 use Illuminate\Http\JsonResponse;
-use App\Services\SiteService\SiteServicesGetValidate;
-use App\Services\SiteService\SiteServicesCreateValidate;
+use App\Http\Requests\SiteService\SiteServicesGetValidate;
+use App\Http\Requests\SiteService\SiteServicesCreateValidate;
 
 /**
  * Interface SiteInterface

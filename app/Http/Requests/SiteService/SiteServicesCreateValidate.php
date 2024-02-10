@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\SiteService;
+namespace App\Http\Requests\SiteService;
 
 use App\Traits\Parameters;
 use App\Traits\ValidateParameters;
@@ -9,14 +9,9 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class SiteServicesGetValidate extends FormRequest
+class SiteServicesCreateValidate extends FormRequest
 {
     use Parameters, ValidateParameters;
-
-    public function authorize(): bool
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,7 +21,7 @@ class SiteServicesGetValidate extends FormRequest
     public function rules(): array
     {
         return [
-            $this->id => $this->_required,
+            $this->domain => $this->_required.'|'.$this->_string,
         ];
     }
 

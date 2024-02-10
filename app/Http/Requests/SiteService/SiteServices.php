@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Services\SiteService;
+namespace App\Http\Requests\SiteService;
 
+use Exception;
 use App\Models\WebSites;
 use App\Traits\Parameters;
 use Illuminate\Http\JsonResponse;
@@ -19,14 +20,14 @@ class SiteServices extends CompilerJson
      *
      * @param array $data An array containing data for creating the website record.
      *                    The array should contain keys corresponding to the fields of the website record.
-     * @return int|bool|JsonResponse The ID of the newly created record or false on failure.
+     * @return int|JsonResponse The ID of the newly created record or false on failure.
      *                               In case of successful creation, it returns the ID of the new record.
      *                               If an exception occurs during creation, it may return a JSON response
      *                               with error details.
      * @throws ValidationException If the data fails validation.
      * @throws ModelNotFoundException If the model cannot be found.
      */
-    public function create(array $data): bool|int|JsonResponse
+    public function create(array $data): int|JsonResponse
     {
         try {
             $res = WebSites::create([
@@ -39,7 +40,7 @@ class SiteServices extends CompilerJson
             return $this->generator($e, $e->getMessage(), 422);
         } catch (ModelNotFoundException $e) {
             return $this->generator($e, $e->getMessage(), 404);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->generator($e, $e->getMessage(), 500);
         }
     }

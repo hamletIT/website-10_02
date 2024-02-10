@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Interfaces\PostInterface;
 use Illuminate\Http\JsonResponse;
-use App\Services\Post\PostService;
 use App\Services\Email\EmailService;
 use App\Http\Controllers\Controller;
-use App\Services\Post\PostServicesGetValidate;
-use App\Services\Post\PostServicesCreateValidate;
 use Illuminate\Validation\ValidationException;
+use App\Http\Requests\PostService\{PostService, PostServicesCreateValidate, PostServicesGetValidate};
 
 class PostController extends Controller implements PostInterface
 {

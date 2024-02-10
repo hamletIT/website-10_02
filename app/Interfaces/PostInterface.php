@@ -3,8 +3,8 @@
 namespace App\Interfaces;
 
 use Illuminate\Http\JsonResponse;
-use App\Services\Post\PostServicesGetValidate;
-use App\Services\Post\PostServicesCreateValidate;
+use App\Http\Requests\PostService\PostServicesGetValidate;
+use App\Http\Requests\PostService\PostServicesCreateValidate;
 
 /**
  * Interface PostInterface

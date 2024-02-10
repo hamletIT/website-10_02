@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Services\SiteService;
+namespace App\Http\Requests\PostService;
 
 use App\Traits\Parameters;
+use App\Rules\WebsiteIdExists;
+use App\Rules\WebsiteTitleExists;
 use App\Traits\ValidateParameters;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class SiteServicesCreateValidate extends FormRequest
+class PostServicesCreateValidate extends FormRequest
 {
     use Parameters, ValidateParameters;
-
-    public function authorize(): bool
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,7 +23,9 @@ class SiteServicesCreateValidate extends FormRequest
     public function rules(): array
     {
         return [
-            $this->domain => $this->_required.'|'.$this->_string,
+            $this->websiteId => [$this->_required, $this->_integer, new WebsiteIdExists],
+            $this->title => [$this->_required, $this->_string, new WebsiteTitleExists],
+            $this->description => $this->_required.'|'.$this->_string,
         ];
     }
 

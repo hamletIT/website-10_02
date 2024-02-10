@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Services\Post;
+namespace App\Http\Requests\PostService;
 
+use Exception;
 use App\Models\Posts;
 use App\Traits\Parameters;
 use App\Models\Subscriptions;
@@ -21,18 +22,18 @@ class PostService extends CompilerJson
      *
      * @param array $data An array containing data for creating the record.
      *                    The array should contain keys corresponding to the fields of the record.
-     * @return bool|int|array|JsonResponse The ID of the newly created record or false on failure.
+     * @return int|array|JsonResponse The ID of the newly created record or false on failure.
      *                                     In case of exceptions, it may return an array with error details
      *                                     or a JSON response indicating the error.
      * @throws ValidationException If the data fails validation.
      * @throws ModelNotFoundException If the model cannot be found.
      */
-    public function create(array $data): bool|int|array|JsonResponse
+    public function create(array $data): int|array|JsonResponse
     {
         DB::beginTransaction();
         try {
             $result = Posts::create([
-                $this->title => $data[$this->title ],
+                $this->title => $data[$this->title],
                 $this->description => $data[$this->description],
                 $this->status => 0,
                 $this->websiteId => $data[$this->websiteId],
@@ -51,7 +52,7 @@ class PostService extends CompilerJson
         } catch (ModelNotFoundException $e) {
             DB::rollback();
             return $this->generator($e, $e->getMessage(), 404);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollback();
             return $this->generator($e, $e->getMessage(), 500);
         }

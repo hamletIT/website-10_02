@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Api\V1;
 use App\Interfaces\SiteInterface;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Services\SiteService\SiteServices;
-use App\Services\SiteService\SiteServicesGetValidate;
-use App\Services\SiteService\SiteServicesCreateValidate;
 use Illuminate\Validation\ValidationException;
+use App\Http\Requests\SiteService\{SiteServices, SiteServicesGetValidate, SiteServicesCreateValidate};
 
 class SitesController extends Controller implements SiteInterface
 {

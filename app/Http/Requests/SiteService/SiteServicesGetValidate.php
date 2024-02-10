@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\SubscriptionService;
+namespace App\Http\Requests\SiteService;
 
 use App\Traits\Parameters;
 use App\Traits\ValidateParameters;
@@ -9,14 +9,9 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class SubscriptionServicesCreateValidate extends FormRequest
+class SiteServicesGetValidate extends FormRequest
 {
-    use ValidateParameters, Parameters;
-
-    public function authorize(): bool
-    {
-        return true;
-    }
+    use Parameters, ValidateParameters;
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,8 +21,7 @@ class SubscriptionServicesCreateValidate extends FormRequest
     public function rules(): array
     {
         return [
-            $this->domain => $this->_required,
-            $this->email => $this->_required,
+            $this->id => $this->_required,
         ];
     }
 

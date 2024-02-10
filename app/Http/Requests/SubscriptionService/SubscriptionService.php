@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\SubscriptionService;
+namespace App\Http\Requests\SubscriptionService;
 
 use App\Traits\Parameters;
 use App\Models\Subscriptions;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use App\Services\Json\CompilerJson;
-use App\Services\UserService\UserService;
+use App\Http\Requests\UserService\UserService;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -26,14 +26,14 @@ class SubscriptionService extends CompilerJson
      *
      * @param array $data An array containing data for creating the subscription record.
      *                    The array should contain keys corresponding to the fields of the subscription record.
-     * @return int|bool|JsonResponse The ID of the newly created record or false on failure.
+     * @return int|JsonResponse The ID of the newly created record or false on failure.
      *                               In case of successful creation, it returns the ID of the new record.
      *                               If an exception occurs during creation, it may return a JSON response
      *                               with error details.
      * @throws ValidationException If the data fails validation.
      * @throws ModelNotFoundException If the model cannot be found.
      */
-    public function create(array $data): bool|int|JsonResponse
+    public function create(array $data): int|JsonResponse
     {
         DB::beginTransaction();
         try {

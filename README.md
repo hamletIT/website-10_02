@@ -4,7 +4,7 @@ website
 
 ## Installation
 
-create .env file
+create .env file and put needed configuration
 ```bash
 composer install
 php artisan key:generate

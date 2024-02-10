@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use App\Interfaces\SubscriptionInterface;
-use App\Services\SubscriptionService\SubscriptionService;
-use App\Services\SubscriptionService\SubscriberServicesGetValidate;
-use App\Services\SubscriptionService\SubscriptionServicesCreateValidate;
 use Illuminate\Validation\ValidationException;
+use App\Http\Requests\SubscriptionService\{SubscriptionService,
+    SubscriberServicesGetValidate,
+    SubscriptionServicesCreateValidate};
 
 class SubscriptionController extends Controller implements SubscriptionInterface
 {

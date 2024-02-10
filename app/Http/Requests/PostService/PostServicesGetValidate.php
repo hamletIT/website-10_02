@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Post;
+namespace App\Http\Requests\PostService;
 
 use App\Traits\Parameters;
 use App\Traits\ValidateParameters;
@@ -12,11 +12,6 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 class PostServicesGetValidate extends FormRequest
 {
     use Parameters, ValidateParameters;
-
-    public function authorize(): bool
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.

@@ -3,8 +3,8 @@
 namespace App\Interfaces;
 
 use Illuminate\Http\JsonResponse;
-use App\Services\SubscriptionService\SubscriberServicesGetValidate;
-use App\Services\SubscriptionService\SubscriptionServicesCreateValidate;
+use App\Http\Requests\SubscriptionService\SubscriberServicesGetValidate;
+use App\Http\Requests\SubscriptionService\SubscriptionServicesCreateValidate;
 
 /**
  * Interface SubscriptionInterface

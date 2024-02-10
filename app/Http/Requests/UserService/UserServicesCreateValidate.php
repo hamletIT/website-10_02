@@ -1,22 +1,17 @@
 <?php
 
-namespace App\Services\SubscriptionService;
+namespace App\Http\Requests\UserService;
 
 use App\Traits\Parameters;
 use App\Traits\ValidateParameters;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class SubscriberServicesGetValidate extends FormRequest
+class UserServicesCreateValidate extends FormRequest
 {
-    use Parameters, ValidateParameters;
-
-    public function authorize(): bool
-    {
-        return true;
-    }
+    use ValidateParameters, Parameters;
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,7 +21,8 @@ class SubscriberServicesGetValidate extends FormRequest
     public function rules(): array
     {
         return [
-            $this->id => $this->_required,
+            $this->domain => $this->_required.'|'.$this->_string,
+            $this->email => $this->emailGlobal
         ];
     }
 
@@ -35,4 +31,3 @@ class SubscriberServicesGetValidate extends FormRequest
         throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }
-

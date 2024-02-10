@@ -1,24 +1,17 @@
 <?php
 
-namespace App\Services\Post;
+namespace App\Http\Requests\SubscriptionService;
 
 use App\Traits\Parameters;
-use App\Rules\WebsiteIdExists;
-use App\Rules\WebsiteTitleExists;
 use App\Traits\ValidateParameters;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PostServicesCreateValidate extends FormRequest
+class SubscriberServicesGetValidate extends FormRequest
 {
     use Parameters, ValidateParameters;
-
-    public function authorize(): bool
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -28,9 +21,7 @@ class PostServicesCreateValidate extends FormRequest
     public function rules(): array
     {
         return [
-            $this->websiteId => [$this->_required, $this->_integer, new WebsiteIdExists],
-            $this->title => [$this->_required, $this->_string, new WebsiteTitleExists],
-            $this->description => $this->_required.'|'.$this->_string,
+            $this->id => $this->_required,
         ];
     }
 
@@ -39,3 +30,4 @@ class PostServicesCreateValidate extends FormRequest
         throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }
+
