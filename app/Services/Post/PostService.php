@@ -7,6 +7,7 @@ use App\Traits\Parameters;
 use App\Models\Subscriptions;
 use Illuminate\Http\JsonResponse;
 use App\Traits\ValidateParameters;
+use Illuminate\Support\Facades\DB;
 use App\Services\Json\CompilerJson;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -28,25 +29,30 @@ class PostService extends CompilerJson
      */
     public function create(array $data): bool|int|array|JsonResponse
     {
+        DB::beginTransaction();
         try {
             $result = Posts::create([
                 $this->title => $data[$this->title ],
                 $this->description => $data[$this->description],
                 $this->status => 0,
                 $this->websiteId => $data[$this->websiteId],
-           ]);
+            ]);
 
             $subscriptions = Subscriptions::where($this->websiteId, $data[$this->websiteId])->get($this->email);
             $newDataEmails = $subscriptions->pluck($this->email)->toArray();
+            DB::commit();
             return [
                 $this->post => $result,
                 $this->email => $newDataEmails
             ];
         } catch (ValidationException $e) {
+            DB::rollback();
             return $this->generator($e, $e->getMessage(), 422);
         } catch (ModelNotFoundException $e) {
+            DB::rollback();
             return $this->generator($e, $e->getMessage(), 404);
         } catch (\Exception $e) {
+            DB::rollback();
             return $this->generator($e, $e->getMessage(), 500);
         }
     }

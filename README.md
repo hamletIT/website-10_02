@@ -11,6 +11,7 @@ php artisan key:generate
 composer require darkaonline/l5-swagger
 php artisan migrate
 php artisan db:seed
+php artisan test --filter SitesControllerTest
 php artisan serve
 ```
 
